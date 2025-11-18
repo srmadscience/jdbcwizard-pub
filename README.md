@@ -8,9 +8,9 @@ This code is com.orindasoft.pub, a utility library used by JDBCWizard, an applic
 # How is it organized?
 
 * Each directory is named after the matching Oracle or DB2 version.
-* The doc directory contains javadoc pages
+* The doc directory contains javadoc pages for Oracle 12.1, which was the last version I worked on. As a rule new features were added over time. But there are cases where driver behavior changed between versions.
 
 # Can I use it?
 
-Yes.
+Yes. 
 

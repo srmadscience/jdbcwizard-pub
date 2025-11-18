@@ -8,7 +8,7 @@ This code is com.orindasoft.pub, a utility library used by JDBCWizard, an applic
 # How is it organized?
 
 * Each directory is named after the matching Oracle or DB2 version.
-* The [docs directory](https://srmadscience.github.io/jdbcwizard-pub/) contains javadoc pages for Oracle 12.1, which was the last version I worked on. As a rule new features were added over time. But there are cases where driver behavior changed between versions.
+* The [docs directory](https://srmadscience.github.io/jdbcwizard-pub/) contains javadoc pages for Oracle 12.1, which was the last version I worked on. As a rule new features were added over time. But there are cases where driver behavior changed between versions. A good starting point is [ReadOnlyRowSet](https://github.com/srmadscience/jdbcwizard-pub/blob/main/1210/com/orindasoft/pub/ReadOnlyRowSet.java)
 
 # Can I use it?
 

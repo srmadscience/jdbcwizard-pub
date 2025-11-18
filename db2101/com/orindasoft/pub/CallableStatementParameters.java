@@ -1,0 +1,291 @@
+package com.orindasoft.pub;
+
+// We prepare JDBC statements
+import java.sql.*;
+
+// We use BigDecimal because Oracle does.
+import java.math.BigDecimal;
+
+// We use File to store Long data types
+import java.io.File;
+
+import com.ibm.db2.jcc.*;
+
+/**
+* A set of parameters for a Callable Statement statement
+* call
+*
+* This class represents OUT or IN/OUT parameters for a Stored Procedure
+* or function. It extends StatementParameters2 which represents IN parameters and
+* is used by both SQL statements and Procedures.
+* <p>
+* Under normal circumstances <a href="http://www.orindasoft.com/?adsrc=api" target="_blank class="manual">OrindaBuild</a> users
+* will have no reason to use this class directly - the created code will use it.
+*
+* <br>(c) Copyright 2003 - 2011 Orinda Software Ltd<p>
+*
+* @version 6.0
+* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @since 6.0.2839 DB2 Compatible version created.
+*/
+public class CallableStatementParameters extends StatementParameters2
+{
+  /**
+  * Array of boolean for keeping track of whether parameters are set or not.
+  */
+  protected boolean[] outputParameterSetArray = null;
+
+  /**
+  * Text of ref cursor invalid message
+  * This message is created by Oracle when a NULL Ref Cursor is returned.
+  */
+  private static final String REF_CURSOR_INVALID = "Ref cursor is invalid";
+
+  /**
+  * Text of curaor closed message
+  * This message is created by Oracle 10.1.10 when a zero length cursor is returned.
+  */
+  private static final String REF_CURSOR_CLOSED = "Cursor is closed.";
+
+  /**
+  * Create a set of statement Parameters of size <tt>howMany</tt>.
+  * @param int howMany The number of parameters the statement requires.
+  */
+  public CallableStatementParameters(int howMany, LogInterface theLog)
+    {
+    super(howMany,theLog);
+    clearParameters();
+    }
+
+  /**
+  * Create a set of statement Parameters by counting '?' characters in a SQL statement
+  * @param String sqlStatement The statement that we will be working with
+  */
+  public CallableStatementParameters(String sqlStatement, LogInterface theLog)
+    {
+    this(SqlUtils.countParameters(sqlStatement),theLog);
+    }
+
+  /**
+  * Clear our parameter array
+  */
+  public void clearParameters()
+    {
+    // Explicitly initialize this array as null.
+    super.clearParameters();
+
+    outputParameterSetArray = new boolean[parameterArray.length];
+
+    for (int i=0; i < parameterArray.length; i++)
+      {
+      outputParameterSetArray[i] = false;
+      }
+    }
+
+  /**
+  * Set an out parameter for a PL/SQL Array
+  * In order to retrieve a PL/SQL varray or table you need to specify the
+  * oracle collection name.
+  * parametervalue is used to store this as well as the resulting array.
+  * @param int parameterId The id of the parameter to set. Id's start at 0.
+  * @param com.orindasoft.pub.PlsqlArray parameterValue
+  * @throws CSException if <tt>parameterId</tt> is not a valid parameter.
+  * @since Oracle 9i/OrindaBuild 4.0.1885
+  */
+  public void setPlSqlTableArrayOutParam(int parameterId
+                                        ,com.orindasoft.pub.PlsqlArray parameterValue) throws CSException
+    {
+    checkRange(parameterId);
+    parameterArray[parameterId-1] = parameterValue;
+    parameterTypeArray[parameterId-1] = Types.ARRAY;
+    outputParameterSetArray[parameterId-1] = true;
+    }
+
+  /**
+  * Set an out parameter
+  * @param int parameterId The id of the parameter to set. Id's start at 0.
+  * @param int parameterType A parameter type
+  * @throws CSException if <tt>parameterId</tt> is not a valid parameter.
+  */
+  public void setOutParam(int parameterId
+                         ,int parameterType) throws CSException
+    {
+    checkRange(parameterId);
+    parameterTypeArray[parameterId-1] = parameterType;
+    outputParameterSetArray[parameterId-1] = true;
+    }
+
+  /**
+  * Set an OPAQUE out parameter
+  * @param int parameterId The id of the parameter to set. Id's start at 0.
+  * @param int parameterType A parameter type
+  * @param String Underlying data type name
+  * @since 6.0.2746
+  * @throws CSException if <tt>parameterId</tt> is not a valid parameter.
+  */
+  public void setOutParam(int parameterId
+                         ,int parameterType
+                         ,String parameterOpaqueTypeName) throws CSException
+    {
+    checkRange(parameterId);
+    parameterTypeArray[parameterId-1] = parameterType;
+    outputParameterSetArray[parameterId-1] = true;
+    parameterOpaqueTypeNameArray[parameterId-1] = parameterOpaqueTypeName;
+    }
+
+  /**
+  * Bind these parameters to a Prepared Statement.
+  *
+  * @param CallableStatement theCallableStatement The prepared statement you
+  * want these parameters bound to.
+  */
+  public void bindParameters(CallableStatement theCallableStatement) throws CSException
+    {
+    if (parameterArray.length > 0)
+      {
+      // First bind all the input params
+      super.bindParameters(theCallableStatement);
+
+      // Bind Parameters. A CSDBException will be thrown if something goes wrong.
+      for (int i=0; i < parameterArray.length; i++)
+        {
+        try
+          {
+          if (outputParameterSetArray[i])
+            {
+            if (parameterTypeArray[i] == Types.ARRAY)
+              {
+              com.orindasoft.pub.PlsqlArray theArray = (com.orindasoft.pub.PlsqlArray)parameterArray[i];
+              theCallableStatement.registerOutParameter(i+1,Types.ARRAY, theArray.getArrayName());
+              }
+            else
+              {
+              theCallableStatement.registerOutParameter(i+1,parameterTypeArray[i]);
+              }
+            }
+          }
+        catch (SQLException e)
+          {
+          theCallableStatement = null;
+          if (e.getErrorCode() == SqlUtils.INVALID_NAME_PATTERN)
+            {
+            throw new CSException("CallableStatementParameters: Error while trying to set output parameter "
+          		             + (i+1)
+          		             + ":ORA-" + SqlUtils.INVALID_NAME_PATTERN + ". This can happen if you are using PL/SQL Package arrays and "
+          		             + "haven't created the extra objects required by JDBCWizard. "
+          		             + "Try running the 'extraObjects.sql' script or calling the "
+          		             + "'createExtraTypeObjects()' method in your service class "
+          		             + ". Message Detail: "
+          		             + e.getMessage()
+          		             );
+            }
+          throw new CSException("CallableStatementParameters: Error while trying to set output parameter " + (i+1) + ":" + e.getClass().getName() + ":" + e.getMessage());
+          }
+        catch (Exception e)
+          {
+          theCallableStatement = null;
+          throw new CSException("CallableStatementParameters: Error while trying to set output parameter " + i + ":" + e.getClass().getName() + ":" + e.getMessage());
+          }
+        }
+      }
+    }
+
+  /**
+  * Unload these parameter from a Prepared Statement.
+  *
+  * @param CallableStatement theCallableStatement The prepared statement you
+  * want these parameters unloaded from.
+  */
+  public void unloadParameters(CallableStatement theCallableStatement) throws CSException
+    {
+    if (parameterArray.length > 0)
+      {
+      // Unload Parameters. A CSDBException will be thrown if something goes wrong.
+      for (int i=0; i < parameterArray.length; i++)
+        {
+        try
+          {
+          if (outputParameterSetArray[i])
+            {
+        	  // In DB2 this is done with getBytes...
+//            if (parameterTypeArray[i] == Types.LONGVARBINARY)
+//              {
+//              parameterArray[i] = theCallableStatement.getBinaryStream(i+1); 
+//              }
+//            else if
+            if (parameterTypeArray[i] == Types.CLOB)
+              {
+              parameterArray[i] = theCallableStatement.getClob(i+1);
+              }
+            else if (parameterTypeArray[i] == Types.BLOB)
+              {
+              parameterArray[i] = theCallableStatement.getBlob(i+1);
+              }
+            else if (parameterTypeArray[i] == Types.ARRAY)
+              {
+              parameterArray[i] = theCallableStatement.getArray(i+1);
+              }
+            else if (parameterTypeArray[i] == DB2Types.CURSOR)
+              {
+              try
+                {
+                  //parameterArray[i] = theCallableStatement.getCursor(i+1);
+                  parameterArray[i] = (java.sql.ResultSet)theCallableStatement.getObject(i+1);
+                }
+              catch (Exception e)
+                {
+                if (e.getMessage().equalsIgnoreCase(REF_CURSOR_INVALID))
+                  {
+                  // REF_CURSOR_INVALID is generated when an attempt is made
+                  // to access a cursor parameter that is null.
+                  parameterArray[i] = null;
+                  }
+                else if (e.getMessage().equalsIgnoreCase(REF_CURSOR_CLOSED))
+                  {
+                  // REF_CURSOR_CLOSED is generated in Oracle 10G when an attempt is made
+                  // to access a cursor that contains zero rows.
+                  parameterArray[i] = null;
+                  }
+                else
+                  {
+                  throw(e);
+                  }
+                }
+              }
+            else
+              {
+              parameterArray[i] = theCallableStatement.getObject(i+1);
+              }
+            }
+          }
+        catch (Exception e)
+          {
+          theCallableStatement = null;
+          throw new CSException("Error while trying to get parameter " + (i+1) + ":" + e.getClass().getName() + ":" + e.getMessage());
+          }
+        }
+      }
+    }
+
+  /**
+  * Complain if not all parameters set...
+  * @throws CSException if one or more parameters is not set.
+  */
+  public void checkSet() throws CSException
+    {
+    for (int i=0; i < parameterArray.length; i++)
+      {
+      if (   (! inputParameterSetArray[i])
+          && (! outputParameterSetArray[i])
+          )
+        {
+        throw new CSException("Parameter " + (i+1) + " not set");
+        }
+      }
+    }
+}
+
+
+
+
+

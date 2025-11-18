@@ -7,7 +7,7 @@ This code is com.orindasoft.pub, a utility library used by JDBCWizard, an applic
 
 # How is it organized?
 
-* Each diretory is named after the matching Oracle or DB2 version.
+* Each directory is named after the matching Oracle or DB2 version.
 * The doc directory contains javadoc pages
 
 # Can I use it?

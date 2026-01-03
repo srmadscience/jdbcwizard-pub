@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 import javax.swing.JLabel;
@@ -21,12 +13,12 @@ import com.orindasoft.pub.*;
 * LogInterface that uses a <code>javax.swing.JLabel</code> field to display messages.
 * it also does modal messages and will log them if asked.
 *
-* See <a href=http://www.orindasoft.com/public/Librarytwo.php4#logor&pdsrc=GD3145 TARGET=_blank class=news>LogInterface</a>
+* See <a href=http://www.orindasoft.com/public/Librarytwo.php4#logor&pdsrc=GD3128 TARGET=_blank class=news>LogInterface</a>
 *
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 * @since 6.0.2839 DB2 Compatible version created.
 */
 public class UiLog extends TextLog implements LogInterface

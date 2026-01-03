@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 /**
@@ -17,12 +9,12 @@ package com.orindasoft.pub;
 * <p> Releases - Handing back the database connection to the calling class.
 * <p> Errors - Error conditions such as prepared statements being unusable.
 * <p>
-* <p> See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface</a>
+* <p> See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface</a>
 *
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 */
 public interface StatsInterface
 {

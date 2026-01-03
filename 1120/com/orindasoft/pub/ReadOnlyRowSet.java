@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 // We're working with JDBC
@@ -32,12 +24,12 @@ import java.io.*;
 /**
 * A class for representing a ResultSet or set of stored procedure parameters.
 * <p>
-* Detailed information on this class is available <a href="http://www.orindasoft.com/public/Librarytwo.php4?siteloc=Librarytwo#reaor&pdsrc=GD3145 TARGET=_blank class=news>here</a>
+* Detailed information on this class is available <a href="http://www.orindasoft.com/public/Librarytwo.php4?siteloc=Librarytwo#reaor&pdsrc=GD3128 TARGET=_blank class=news>here</a>
 * <p>
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 */
 public class ReadOnlyRowSet
 {
@@ -802,7 +794,10 @@ public class ReadOnlyRowSet
            break;                                                       
            }                                                            
         case SqlUtils.ORACLE_OTHER_DATATYPE:                                     
-          {                                                             
+        // Prior to 12.1 SDO Geometry and XMLTYPE both showed up as 'other'      
+        case SqlUtils.ORACLE_SDO_GEOMETRY_DATATYPE:                                       
+        case SqlUtils.ORACLE_XMLTYPE_DATATYPE:                                          
+          {                                                              
             // Some 'other' types we like...    
             // Note that we fall thrpugh tpo default: if we dont match       
         	  if (   columnOracleDatatypeNames[columnId].equals("SYS.XMLTYPE")

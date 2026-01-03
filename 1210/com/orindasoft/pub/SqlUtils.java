@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 import java.sql.*;
@@ -15,10 +7,10 @@ import oracle.jdbc.OracleTypes;
 * A set of useful static methods for working with SQL.
 * <p>
 * This class changes for different versions of Oracle.
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 */
 public class SqlUtils
 {
@@ -666,16 +658,15 @@ public class SqlUtils
       {                                                            
       returnCode = ORACLE_PLSQL_INDEXBY_DATATYPE;                  
       }                                                             
-     // SYS.XMLTYPE is used as well as XMLTYPE                    
-    else if (   theColumnDataType.equals("SYS.XMLTYPE"))              
-      {                                                           
-      returnCode = ORACLE_XMLTYPE_DATATYPE;                         
-      }                                                           
     else if (   theColumnDataType.equals("XMLTYPE"))               
       {                                                           
       returnCode = ORACLE_XMLTYPE_DATATYPE;                         
       }                                                           
     else if (   theColumnDataType.equals("SDO_GEOMETRY"))               
+      {                                                           
+      returnCode = ORACLE_SDO_GEOMETRY_DATATYPE;                         
+      }                                                           
+    else if (   theColumnDataType.equals("MDSYS.SDO_GEOMETRY"))               
       {                                                           
       returnCode = ORACLE_SDO_GEOMETRY_DATATYPE;                         
       }                                                           

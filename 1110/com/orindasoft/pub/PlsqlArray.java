@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 import java.sql.Connection;
@@ -16,10 +8,10 @@ import java.sql.Connection;
 * This interface is implemented by generated classes that represents PL/SQL
 * VARRAYS or TABLES. It is used at the bind/getResults stage.
 * <p>
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 * @since Oracle 10g/4.0.1902
 */
 public interface PlsqlArray

@@ -1,0 +1,192 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
+   <hash n="component-versions">
+      <value n="oracle.ide.model.Project" v="9.0.5.1"/>
+   </hash>
+   <list n="contentSets">
+      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
+      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
+      <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
+      <string v="oracle.jdeveloper.offlinedb.OfflineDBProjectSettings/offlineDBContentSet"/>
+      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
+   </list>
+   <value n="defaultPackage" v="com.orindasoft.app.procbuilder.jdev"/>
+   <hash n="oracle.bm.commonIde.data.project.ModelerProjectSettings">
+      <hash n="modelersContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="model/"/>
+         </list>
+      </hash>
+      <value n="modelersVersion" v="9.05"/>
+   </hash>
+   <hash n="oracle.ide.model.ResourcePaths">
+      <hash n="resourcesContentSet">
+         <list n="pattern-filters">
+            <string v="+Ob4.jar.deploy"/>
+            <string v="-**"/>
+         </list>
+         <list n="url-path">
+            <url path="../jDev/Deploy/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.ide.model.TechnologyScopeConfiguration">
+      <list n="technologyScope">
+         <string v="Java"/>
+         <string v="Database"/>
+         <string v="General"/>
+         <string v="JavaBeans"/>
+         <string v="Swing/AWT"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
+      <list n="copyRes">
+         <string v=".gif"/>
+         <string v=".properties"/>
+         <string v=".jpg"/>
+         <string v=".jpeg"/>
+         <string v=".xml"/>
+         <string v="-apf.xml"/>
+         <string v=".xcfg"/>
+         <string v=".cpx"/>
+         <string v=".css"/>
+         <string v=".js"/>
+         <string v=".png"/>
+      </list>
+      <value n="internalEncoding" v="Cp1252"/>
+   </hash>
+   <hash n="oracle.jdeveloper.model.J2eeSettings">
+      <value n="j2eeWebAppName" v="OrindaBuildWizardV2-OBWiz2_1-webapp"/>
+      <value n="j2eeWebContextRoot" v="OrindaBuildWizardV2-OBWiz2_1-context-root"/>
+      <hash n="webContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="public_html/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="javaContentSet">
+         <list n="constituent-sets">
+            <hash>
+               <url n="content-folder-url" path="META-INF/"/>
+               <list n="pattern-filters">
+                  <string v="+META-INF/"/>
+               </list>
+               <list n="url-path">
+                  <url path="."/>
+               </list>
+            </hash>
+            <hash>
+               <url n="content-folder-url" path="com/"/>
+               <list n="pattern-filters">
+                  <string v="-com/orindasoft/app/common/gui"/>
+                  <string v="-com/orindasoft/app/procbuilder/app"/>
+                  <string v="-com/orindasoft/app/procbuilder/jdev/generated"/>
+                  <string v="-com/orindasoft/customers"/>
+                  <string v="-com/orindasoft/demo"/>
+                  <string v="-com/orindasoft/prod"/>
+                  <string v="-com/orindasoft/pub"/>
+                  <string v="-com/orindasoft/test"/>
+                  <string v="-com/orindasoft/test3b"/>
+                  <string v="-com/orindasoft/testdatageneration"/>
+                  <string v="+com/"/>
+               </list>
+               <list n="url-path">
+                  <url path="."/>
+               </list>
+            </hash>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.offlinedb.OfflineDBProjectSettings">
+      <hash n="offlineDBContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="database/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="name" v="Default"/>
+         </hash>
+      </hash>
+      <list n="runConfigurationList">
+         <string v="Default"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="Additional Classpath"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <hash n="internalDefinitions">
+         <list n="jdkDefinitions"/>
+         <list n="libraryDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="../Lib/classes12_1010.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="JDBC 10"/>
+               <list n="docPath"/>
+               <value n="id" v="JDBC 10"/>
+               <list n="sourcePath"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../Lib/jbcl3.0-res.jar" jar-entry=""/>
+                  <url path="../Lib/jbcl3.0.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Additional Classpath"/>
+               <value n="id" v="Additional Classpath"/>
+            </hash>
+         </list>
+      </hash>
+      <hash n="jdkReference">
+         <value n="id" v="1.4.2_03"/>
+         <value n="isJDK" v="true"/>
+         <value n="jdkVersion" v="1.4.2_03"/>
+      </hash>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="Additional Classpath"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JDeveloper Extension SDK"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JClient Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JDBC 10"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectPaths">
+      <url n="outputDirectory" path="../Built/jdevclasses/"/>
+   </hash>
+   <list n="ownerMap"/>
+   <list n="recentlyUsedPackages">
+      <string v="com.orindasoft.app.procbuilder.jdev"/>
+      <string v="oracle.ide.log"/>
+      <string v="mypackage1"/>
+   </list>
+</jpr:project>

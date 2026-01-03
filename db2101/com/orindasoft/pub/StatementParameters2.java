@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 // We prepare JDBC statements
@@ -80,7 +72,7 @@ public class StatementParameters2
   * and version of com.orindasoft.pub Library.
   * @since 6.0.2706
   */
-  private static final int buildNumber =  3145;
+  private static final int buildNumber =  3128;
 
   /**
   * Create a set of statement Parameters of size <tt>howMany</tt>.
@@ -804,7 +796,7 @@ public class StatementParameters2
        {
        throw new CSException("Mismatch between build numbers of generated code ("
                             + pBuild
-                            +") and com.orindasoft.pub Library (3145)");
+                            +") and com.orindasoft.pub Library (3128)");
        }
      }
   }

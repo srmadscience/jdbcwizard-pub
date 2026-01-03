@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 /* import changed for Oracle 11g */
@@ -33,10 +25,10 @@ import java.text.NumberFormat;
 * Under normal circumstances <a href="http://www.orindasoft.com/?adsrc=api" target="_blank class="manual">JDBCWizard</a> users
 * will have no reason to use this class directly - the generated code will use it.
 * <p>
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 * @since Oracle 10g/5.0.2556
 */
 public class PlsqlIndexByTable2

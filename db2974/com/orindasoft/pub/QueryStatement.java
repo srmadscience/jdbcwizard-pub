@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 // We are working with JDBC
@@ -29,10 +21,10 @@ import com.orindasoft.pub.StatsInterface;
 * that continues to exist even if the connection it uses is withdrawn. It extends
 * DMLStatement
 * <p>
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 * @since 2.0.1477: execute() will now attempt to reparse if the first attempt at execution fails
 * @since 6.0.2839 DB2 Compatible version created.
 */
@@ -130,56 +122,56 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**
   * Counter for number of Parses - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long parseCount = 0;
 
   /**
   * Counter for amount of time spent parsing in milliseconds - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long parseTimeMilliseconds = 0;
 
   /**
   * Counter for number of executions - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long executionCount = 0;
 
   /**
   * Counter for amount of time spent executing - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long executionTimeMilliseconds = 0;
 
   /**
   * Counter for amount of time spent retrieving - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long retrieveTimeMilliseconds = 0;
 
   /**
   * Counter for number of Connection Releases - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long releaseCount = 0;
 
   /**
   * Counter for number of Errors - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long errorCount = 0;
 
   /**
   * Counter for how long a statement has spent executing or parsing - used by StatsInterface
   * @see StatsInterface
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */
   long statsEventTimer = 0;
 
@@ -644,7 +636,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Reset all stats counters to 0. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public void resetStatsCounters()      
     {                                  
@@ -660,7 +652,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Return counter containing number of parses. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public long getParses()      
     {                               
@@ -670,7 +662,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Return counter containing time spent parsing in milliseconds. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public long getParseTime()      
     {                               
@@ -680,7 +672,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Return counter containing number of executions. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public long getExecutions()     
     {                               
@@ -690,7 +682,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Return counter containing time spent executing statement in milliseconds. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public long getExecutionTime()     
     {                               
@@ -700,7 +692,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Return counter containing time spent retrieving data in milliseconds. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public long getRetrievalTime()     
     {                               
@@ -710,7 +702,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Return counter containing number of releases. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public long getReleases()             
     {                                
@@ -720,7 +712,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                                        
   * Return counter containing number of errors. Used to implement StatsInterface    
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                         
   public long getErrors()             
     {                                
@@ -730,7 +722,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                          
   * Start timer used to keep track of parse and execution time - used to implement StatsInterface  
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                       
   protected void startStatsTimer()      
     {                                    
@@ -740,7 +732,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                          
   * Increment counter used to keep track of parses - used to implement StatsInterface  
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                       
   private void incParseCount()      
     {                                    
@@ -760,7 +752,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                          
   * Increment counter used to keep track of executions - used to implement StatsInterface  
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                       
   private void incExecutionCount()   
     {                               
@@ -780,7 +772,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                          
   * Increment variable used to keep track of retrieval time - used to implement StatsInterface  
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                       
   protected void incRetrieveTime()   
     {                               
@@ -791,7 +783,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                          
   * Increment counter used to keep track of releases - used to implement StatsInterface  
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                       
   private void incReleaseCount()     
     {                                  
@@ -808,7 +800,7 @@ public class QueryStatement extends DmlStatement implements OracleResourceUser
   /**                                          
   * Increment counter used to keep track of errors - used to implement StatsInterface  
   * @see StatsInterface  
-  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3145 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
+  * See <a href=http://www.orindasoft.com/public/Librarytwo.php4#staor&pdsrc=GD3128 TARGET=_blank class=news>StatsInterface - a generic set of performance measuring methods</a>
   */                                                       
   private void incErrorCount()     
     {                                  

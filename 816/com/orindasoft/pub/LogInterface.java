@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 /**
@@ -27,12 +19,12 @@ package com.orindasoft.pub;
 * <P> <code>flush()</code> - Flushes any log files being written to.
 * <P> <code>getCurrentLogFile()</code> - Returns name of current log file.
 * <P>
-* <p> See <a href=http://www.orindasoft.com/public/Librarytwo.php4#logor&pdsrc=GD3145 TARGET=_blank class=news>LogInterface</a>
+* <p> See <a href=http://www.orindasoft.com/public/Librarytwo.php4#logor&pdsrc=GD3128 TARGET=_blank class=news>LogInterface</a>
 * <p>
-* <br>(c) 2003-2015 Orinda Software Ltd
+* <br>(c) 2003-2025 David Rolfe
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 */
 public interface LogInterface
 {

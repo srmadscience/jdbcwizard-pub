@@ -1,11 +1,3 @@
-/*
- * Copyright (C) 2025 David Rolfe
- *
- * Use of this source code is governed by an MIT
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
 package com.orindasoft.pub;
 
 /**
@@ -15,12 +7,12 @@ package com.orindasoft.pub;
 * class can then iterate through the vector of <tt>OracleResourceUser</tt> and get them to free
 * their resources.
 * <p>
-* <p> See <a href=http://www.orindasoft.com/public/Librarytwo.php4#oresor&pdsrc=GD3145 TARGET=_blank class=news>OracleResourceUser</a>
+* <p> See <a href=http://www.orindasoft.com/public/Librarytwo.php4#oresor&pdsrc=GD3128 TARGET=_blank class=news>OracleResourceUser</a>
 * <p>
-* <br>(c) Copyright 2003 - 2015 Orinda Software Ltd<p>
+* <br>(c) Copyright 2003 - 2025 David Rolfe<p>
 *
 * @version 6.0
-* @author  <a href="http://www.orindasoft.com/?pdsrc=api" target="_blank" class=news>Orinda Software</a>
+* @author  <a href="http://www.rolfe.ie/?pdsrc=api" target="_blank" </a>
 */
 public interface OracleResourceUser
 {

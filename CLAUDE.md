@@ -22,17 +22,20 @@ Differences between versions are small and driver-behavior-driven (e.g. `1210` a
 
 ## Building
 
-There is no in-repo build system (no Maven/Gradle/Ant). Each version directory ships Eclipse (`.classpath`, `.project`) and Oracle JDeveloper (`.jpr`, `.jws`) project files. The `.classpath` files reference **Windows-absolute jar paths** (e.g. `C:/DR/Work/CodeSpooks/Lib/...`) that will not exist locally.
+A Maven aggregator (`pom.xml` at the repo root) exists **purely to compile-check** all the version copies. It is *not* a faithful build of the original artifacts (see the caveat below).
 
-To compile a version you must supply the external dependencies on the classpath:
-- An Oracle JDBC driver matching the version (`ojdbcN.jar`) — provides `oracle.jdbc.*`, `oracle.sql.ARRAY`/`ArrayDescriptor`, `OracleTypes`.
-- `log4j-1.2.x`, `j2ee.jar` (JDBC `RowSet`/`javax.sql`), and JNDI helpers per the `.classpath`.
-- JDK with Swing (`javax.swing.*` is used by `UiLog`).
-
-Example compile of the canonical version:
 ```sh
-javac -cp "ojdbc.jar:j2ee.jar:log4j-1.2.8.jar" -d /tmp/out 1210/com/orindasoft/pub/*.java
+mvn compile            # compile-check every version directory
+mvn -pl 1210 compile   # just the canonical Oracle 12.1 copy
+mvn -pl db2101 compile  # a single DB2 copy
 ```
+
+The root pom is `packaging=pom` and lists each version directory as a module; every `<dir>/pom.xml` is a thin module that inherits the parent. The parent centralizes the dependency and compiler config and uses `sourceDirectory=${project.basedir}` (re-evaluated per module) because sources live at the directory root, not `src/main/java`. It also excludes the stray top-level `TextLog.java`, which is a non-identical duplicate of `com/orindasoft/pub/TextLog.java` and would otherwise be a duplicate-class error (present in the Oracle dirs only; the `db2*` dirs don't have it).
+
+**Compile-check only — not a runtime-faithful build.** The library's *only* external compile dependency is a small, stable slice of the vendor JDBC API (`oracle.jdbc.{OracleCallableStatement,OraclePreparedStatement,OracleResultSet,OracleTypes}`, `oracle.sql.{ARRAY,ArrayDescriptor}`; the `db2*` dirs also use `com.ibm.db2.jcc.DB2Types`). The period-correct 8i–12.1 / matching DB2 drivers are **not on Maven Central**, so every module builds against a *modern* driver (`com.oracle.database.jdbc:ojdbc11`, `com.ibm.db2:jcc`) at `release=11`. This passes `javac` but does **not** reproduce each version's original runtime — do not treat the resolved jars as the shipping drivers. `log4j`/`j2ee.jar`/JNDI in the old `.classpath` files are legacy runtime cruft, not compile deps; Swing (`javax.swing.*`, used by `UiLog`) ships with the JDK.
+
+The original IDE project files are still present per directory — Eclipse (`.classpath`, `.project`) and Oracle JDeveloper (`.jpr`, `.jws`) — but their `.classpath` entries point at **Windows-absolute jar paths** (e.g. `C:/DR/Work/CodeSpooks/Lib/...`) that won't exist locally.
+
 There is no test suite in this repo; regression-test examples live in the separate `jdbcwizard-test-code` project.
 
 ## Architecture

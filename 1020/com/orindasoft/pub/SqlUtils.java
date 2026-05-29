@@ -527,6 +527,9 @@ public class SqlUtils
              || theColumnDataType.equals("CHAR")
              || theColumnDataType.equals("CHARACTER")
              || theColumnDataType.equals("STRING")
+             || theColumnDataType.equals("NCHAR")     // National character set - read/written as String
+             || theColumnDataType.equals("NVARCHAR2")
+             || theColumnDataType.equals("NVARCHAR")
              )
       {
       returnCode = ORACLE_TEXT_DATATYPE;
@@ -561,6 +564,11 @@ public class SqlUtils
              || theColumnDataType.equals("REAL")
              || theColumnDataType.equals("SMALLINT")
              || theColumnDataType.equals("PLS_INTEGER")
+             || theColumnDataType.equals("BINARY_FLOAT")   // Oracle 10g+ native floating point
+             || theColumnDataType.equals("BINARY_DOUBLE")
+             || theColumnDataType.equals("SIMPLE_INTEGER") // PL/SQL non-null subtypes
+             || theColumnDataType.equals("SIMPLE_FLOAT")
+             || theColumnDataType.equals("SIMPLE_DOUBLE")
              || theColumnDataType.equals("DECFLOAT")//DB2
              )
       {
@@ -570,7 +578,8 @@ public class SqlUtils
       {
       returnCode = ORACLE_LONGTEXT_DATATYPE;
       }
-    else if (theColumnDataType.equals("CLOB"))
+    else if (   theColumnDataType.equals("CLOB")
+             || theColumnDataType.equals("NCLOB")) // National character set CLOB - a java.sql.NClob is a Clob
       {
       returnCode = ORACLE_CLOB_DATATYPE;
       }

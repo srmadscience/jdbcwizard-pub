@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.orindasoft</groupId>
+  <artifactId>jdbcwizard-pub-parent</artifactId>
+  <version>6.0.3128</version>
+  <packaging>pom</packaging>
+
+  <name>JDBCWizard Public Library (aggregator)</name>
+  <description>
+    Aggregator build for compile-checking the per-version copies of the
+    com.orindasoft.pub library. Each module is one Oracle/DB2 version directory.
+
+    NOTE: this exists only to verify the sources compile. The period-correct
+    Oracle JDBC drivers (8i-12.1) are not on Maven Central, so every module
+    compiles against a modern ojdbc11 instead. The library only uses a tiny,
+    stable subset of the oracle.jdbc/oracle.sql API, so this is sufficient for
+    a javac sanity check but does NOT reproduce the original per-version runtime.
+  </description>
+
+  <modules>
+    <module>815</module>
+    <module>816</module>
+    <module>817</module>
+    <module>901</module>
+    <module>920</module>
+    <module>1010</module>
+    <module>1020</module>
+    <module>1110</module>
+    <module>1120</module>
+    <module>1210</module>
+    <module>DEMO</module>
+    <module>db2101</module>
+    <module>db2974</module>
+    <module>db2demo</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+    <ojdbc.version>23.6.0.24.10</ojdbc.version>
+  </properties>
+
+  <dependencies>
+    <!-- Modern stand-in for the period-correct driver; see <description> above. -->
+    <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ojdbc11</artifactId>
+      <version>${ojdbc.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- Sources live at the directory root (com/orindasoft/pub/...), not src/main/java.
+         ${project.basedir} is re-evaluated per module, so each module compiles its own copy. -->
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <excludes>
+            <!-- Stray duplicate of com.orindasoft.pub.TextLog at the dir root
+                 (Oracle modules only); would be a duplicate class otherwise. -->
+            <exclude>TextLog.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

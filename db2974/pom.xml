@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.orindasoft</groupId>
+    <artifactId>jdbcwizard-pub-parent</artifactId>
+    <version>6.0.3128</version>
+  </parent>
+  <artifactId>jdbcwizard-pub-db2974</artifactId>
+  <description>com.orindasoft.pub built for version "db2974" (DB2). Also uses the IBM DB2 JCC driver.</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.ibm.db2</groupId>
+      <artifactId>jcc</artifactId>
+      <version>11.5.9.0</version>
+    </dependency>
+  </dependencies>
+</project>
